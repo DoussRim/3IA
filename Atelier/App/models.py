@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator,MaxValueValidator
+# from django.utils.timezone import datetime
+
 def is_esprit_mail(value):
     if not str(value).endswith('@esprit.tn'):
         # return "Vote email n'est valide"+value
@@ -43,9 +45,22 @@ class Projet(models.Model):
         through='MemberShipInProject'
         
     )
+    # creation_date=models.DateTimeField()
+    class Meta:
+        # verbose_name=('Project')
+        verbose_name_plural=('Project')
+        # models.CheckConstraint(
+        #     check=models.Q(creation_date__gt=datetime.now(),
+        #     name="Please Check the date!"))
+        # Views.py
+        # Projet.object.get(Q(creation_date__gt=datetime.now(),
+        #                
+    
 class MemberShipInProject(models.Model):
     projet=models.ForeignKey(Projet,on_delete=models.CASCADE)
     etudiant=models.ForeignKey(Etudiant,on_delete=models.CASCADE)
     tim_allocated_by_member=models.IntegerField(
              'Temps alloué par les membres')
+    # class Meta:
+    #     unique_together=('projet','etudiant')
 
