@@ -1,0 +1,17 @@
+<table border="1">
+    <tr>
+        <th>Titre Projet</th>
+        <th>Duree</th><th>Temps Alloue</th><th>Etat</th>
+        <th>Createur</th>
+    </tr>
+    {% for pp in p  %}
+        <tr>
+            <td>{{pp.nom_projet}}</td>
+            <td>{{pp.duree_projet}}</td>
+            <td>{{pp.temps_alloue_par_projet}}</td>
+            <td>{{pp.est_valide}}</td>
+            <td>{{pp.createur}}</td>
+
+        </tr>
+    {%endfor%}
+</table>

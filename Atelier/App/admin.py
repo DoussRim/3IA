@@ -6,6 +6,7 @@ class MemberProject(admin.StackedInline):
     extra=1
 class SearchEtudiant(admin.ModelAdmin):
     search_fields=['nom']
+@admin.register(Projet)
 class ProjetAdmin(admin.ModelAdmin):
     list_display=('nom_projet','duree_projet',
                   'temps_alloue_par_projet',
@@ -40,6 +41,6 @@ class ProjetAdmin(admin.ModelAdmin):
     actions_on_bottom=True
     actions_on_top=False
 
-admin.site.register(Projet,ProjetAdmin)
+# admin.site.register(Projet,ProjetAdmin)
 admin.site.register(Coach)
 admin.site.register(Etudiant,SearchEtudiant)
